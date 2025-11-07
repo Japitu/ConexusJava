@@ -1,11 +1,22 @@
 package br.com.fiap.to;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+
 public class ConsultaTO {
-    private long id; // id_consulta
-    private String status; // st_consulta
-    private long idMedico; // id_medico
-    private long idPaciente; // id_paciente
-    private long idChamado; // id_chamado
+    private long id;
+    @NotBlank
+    private String status;
+    @NotNull
+    @PositiveOrZero
+    private long idMedico;
+    @NotNull
+    @PositiveOrZero
+    private long idPaciente;
+    @NotNull
+    @PositiveOrZero
+    private long idChamado;
 
     public ConsultaTO() {}
 

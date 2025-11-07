@@ -17,12 +17,6 @@ public class DificuldadeBO {
     public DificuldadeTO save(DificuldadeTO dificuldade) {
         dificuldadeDAO = new DificuldadeDAO();
 
-        /*
-        Colocar Regra de negocio de:
-        Status: Aberto, Cancelado, Finalizado
-
-
-        */
         return dificuldadeDAO.save(dificuldade);
     }
 
@@ -40,8 +34,6 @@ public class DificuldadeBO {
 
     public DificuldadeTO update(DificuldadeTO dificuldade) {
         dificuldadeDAO = new DificuldadeDAO();
-
-        // Colocar as mesmas regras do Save
 
         return dificuldadeDAO.update(dificuldade);
     }

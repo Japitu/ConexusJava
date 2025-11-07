@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ChamadoDAO {
@@ -44,7 +45,7 @@ public class ChamadoDAO {
             ps.setString(1, chamado.getTipoProblema());
             ps.setInt(2, chamado.getUrgencia());
             ps.setString(3, chamado.getStatus()); //Isso vai começar com "Agendado"?
-            ps.setDate(4, Date.valueOf(chamado.getDataChamado()));
+            ps.setDate(4, Date.valueOf(LocalDate.now()));
             ps.setLong(5, chamado.getIdDificuldade());
             ps.setLong(6, chamado.getIdPaciente());
             if (ps.executeUpdate() > 0) {
@@ -99,15 +100,14 @@ public class ChamadoDAO {
     }
 
     public ChamadoTO update(ChamadoTO chamado) {
-        String sql = "update t_cxv_chamado set tp_problema = ?, nr_urgencia = ?, st_dificuldade = ?, dt_chamado = ?, id_dificuldade = ?, id_paciente = ? where id_chamado = ?";
+        String sql = "update t_cxv_chamado set tp_problema = ?, nr_urgencia = ?, st_dificuldade = ?, id_dificuldade = ?, id_paciente = ? where id_chamado = ?";
         try(PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
             ps.setString(1, chamado.getTipoProblema());
             ps.setInt(2, chamado.getUrgencia());
             ps.setString(3, chamado.getStatus());
-            ps.setDate(4, Date.valueOf(chamado.getDataChamado()));
-            ps.setLong(5, chamado.getIdDificuldade());
-            ps.setLong(6, chamado.getIdPaciente());
-            ps.setLong(7, chamado.getId());
+            ps.setLong(4, chamado.getIdDificuldade());
+            ps.setLong(5, chamado.getIdPaciente());
+            ps.setLong(6, chamado.getId());
             if (ps.executeUpdate() > 0) {
                 return chamado;
             } else {

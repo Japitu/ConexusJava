@@ -17,11 +17,6 @@ public class ConsultaBO {
     public ConsultaTO save(ConsultaTO consulta) {
         consultaDAO = new ConsultaDAO();
 
-        /*
-        Regra de negocio:
-        Status: Agendado, Realizado, Cancelado
-         */
-
         return consultaDAO.save(consulta);
     }
 
@@ -39,8 +34,6 @@ public class ConsultaBO {
 
     public ConsultaTO update(ConsultaTO consulta) {
         consultaDAO = new ConsultaDAO();
-
-        // Colocar a mesma regra do Save
 
         return consultaDAO.update(consulta);
     }

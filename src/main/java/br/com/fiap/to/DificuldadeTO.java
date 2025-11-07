@@ -1,10 +1,17 @@
 package br.com.fiap.to;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+
 import java.time.LocalDate;
 
 public class DificuldadeTO {
     private long id;
+    @NotNull
+    @PositiveOrZero
     private long idPaciente;
+    @NotBlank
     private String status;
     private LocalDate dataDificuldade;
     private String descricao;

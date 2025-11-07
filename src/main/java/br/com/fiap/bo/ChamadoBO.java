@@ -17,12 +17,10 @@ public class ChamadoBO {
     public ChamadoTO save(ChamadoTO chamado) {
         chamadoDAO = new ChamadoDAO();
 
-        /*
-        Colocar Regra de negocio de:
-        Tipo Problema: Ver alguns tipos
-        Urgencia: 0 - 10
-        Status: Agendado, Em andamento, Finalizado, Cancelado
-        */
+        if(chamado.getUrgencia() > 10) {
+            return null;
+        }
+
 
         return chamadoDAO.save(chamado);
     }
@@ -42,7 +40,9 @@ public class ChamadoBO {
     public ChamadoTO update(ChamadoTO chamado) {
         chamadoDAO = new ChamadoDAO();
 
-        // Colocar a mesma regra do Save
+        if(chamado.getUrgencia() > 10) {
+            return null;
+        }
 
         return chamadoDAO.update(chamado);
     }

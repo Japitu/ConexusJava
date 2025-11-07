@@ -1,15 +1,27 @@
 package br.com.fiap.to;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+
 import java.time.LocalDate;
 
 public class ChamadoTO {
-    private long id; // id_chamado
-    private String tipoProblema; // tp_problema
-    private int urgencia; // nr_urgencia
-    private String status; // st_dificuldade
-    private LocalDate dataChamado; // dt_chamado
-    private long idDificuldade; // id_dificuldade
-    private long idPaciente; // id_paciente
+    private long id;
+    @NotBlank
+    private String tipoProblema;
+    @NotNull
+    @PositiveOrZero
+    private int urgencia;
+    @NotBlank
+    private String status;
+    private LocalDate dataChamado;
+    @NotNull
+    @PositiveOrZero
+    private long idDificuldade;
+    @NotNull
+    @PositiveOrZero
+    private long idPaciente;
 
     public ChamadoTO() {}
 

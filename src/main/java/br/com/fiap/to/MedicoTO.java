@@ -1,9 +1,17 @@
 package br.com.fiap.to;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+
 public class MedicoTO {
     private long id;
+    @NotBlank
     private String nome;
+    @NotBlank
     private String area;
+    @PositiveOrZero
+    @NotNull
     private long telefone;
 
     public MedicoTO() {}

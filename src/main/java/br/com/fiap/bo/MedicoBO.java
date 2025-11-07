@@ -17,11 +17,6 @@ public class MedicoBO {
     public MedicoTO save(MedicoTO medico) {
         medicoDAO = new MedicoDAO();
 
-        /*
-        Regra de negocio de:
-        Area: Nutricionista, Psicologo, Fisioterapeuta
-        Numero telefone: abaixo de 100000000000
-        */
         return medicoDAO.save(medico);
     }
 
@@ -39,8 +34,6 @@ public class MedicoBO {
 
     public MedicoTO update(MedicoTO medico) {
         medicoDAO = new MedicoDAO();
-
-        // Colocar as mesmas regras do Save
 
         return medicoDAO.update(medico);
     }
