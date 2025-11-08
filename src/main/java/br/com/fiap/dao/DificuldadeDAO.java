@@ -59,7 +59,7 @@ public class DificuldadeDAO {
 
     public DificuldadeTO findById (Long id) {
         DificuldadeTO dificuldade = new DificuldadeTO();
-        String sql = "select * from t_cxv_dificuldade where id = ?";
+        String sql = "select * from t_cxv_dificuldade where id_dificuldade = ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();

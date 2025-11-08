@@ -57,7 +57,7 @@ public class PacienteDAO {
 
     public PacienteTO findbyId(Long id) {
         PacienteTO paciente = new PacienteTO();
-        String sql = "select * from t_cxv_paciente where id = ?";
+        String sql = "select * from t_cxv_paciente where id_paciente = ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();

@@ -44,7 +44,7 @@ public class ChamadoDAO {
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
             ps.setString(1, chamado.getTipoProblema());
             ps.setInt(2, chamado.getUrgencia());
-            ps.setString(3, chamado.getStatus()); //Isso vai começar com "Agendado"?
+            ps.setString(3, "A"); //Isso vai começar com "Agendado"
             ps.setDate(4, Date.valueOf(LocalDate.now()));
             ps.setLong(5, chamado.getIdDificuldade());
             ps.setLong(6, chamado.getIdPaciente());

@@ -55,7 +55,7 @@ public class MedicoDAO {
 
     public MedicoTO findById(Long id) {
         MedicoTO medico = new MedicoTO();
-        String sql = "select * from t_cxv_medico where id = ?";
+        String sql = "select * from t_cxv_medico where id_medico = ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
@@ -76,7 +76,7 @@ public class MedicoDAO {
     }
 
     public boolean delete (Long id) {
-        String sql = "delete from t_cxv_medico where id = ?";
+        String sql = "delete from t_cxv_medico where id_medico = ?";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
             ps.setLong(1, id);
             return ps.executeUpdate() > 0;
