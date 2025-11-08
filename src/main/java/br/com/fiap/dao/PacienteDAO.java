@@ -99,6 +99,11 @@ public class PacienteDAO {
             ps.setLong(3, paciente.getCpf());
             ps.setString(4, paciente.getSexoBiologico());
             ps.setLong(5, paciente.getId());
+            if (ps.executeUpdate() > 0) {
+                return paciente;
+            } else {
+                return null;
+            }
 
         }catch (SQLException e) {
             System.out.println("Erro ao atualizar: " + e.getMessage());
