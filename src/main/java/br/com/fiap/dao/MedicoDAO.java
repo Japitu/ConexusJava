@@ -12,9 +12,10 @@ public class MedicoDAO {
     public ArrayList<MedicoTO> findAll() {
         ArrayList<MedicoTO> medicos = new ArrayList<MedicoTO>();
         String sql = "select * from t_cxv_medico order by id_medico";
-        try(PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
+        try(PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql))
+        {
             ResultSet rs = ps.executeQuery();
-            if ( rs != null) {
+            if (rs != null) {
                 while (rs.next()) {
                     MedicoTO medico = new MedicoTO();
                     medico.setId(rs.getLong("id_medico"));

@@ -59,7 +59,7 @@ public class MedicoResource {
 
     @DELETE
     @Path("/{id}")
-    public Response elete (@PathParam("id") Long id) {
+    public Response delete (@PathParam("id") Long id) {
         Response.ResponseBuilder response = null;
         if(medicoBO.delete(id)) {
             response = Response.status(204);
