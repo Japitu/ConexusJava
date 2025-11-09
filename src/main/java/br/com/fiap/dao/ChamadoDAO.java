@@ -23,7 +23,7 @@ public class ChamadoDAO {
                     chamado.setTipoProblema(rs.getString("tp_problema"));
                     chamado.setUrgencia(rs.getInt("nr_urgencia"));
                     chamado.setStatus(rs.getString("st_dificuldade"));
-                    chamado.setDataChamado(rs.getDate("dt_chamado").toLocalDate()); //Ver com o pessoal
+                    chamado.setDataChamado(rs.getDate("dt_chamado").toLocalDate());
                     chamado.setIdDificuldade(rs.getLong("id_dificuldade"));
                     chamado.setIdPaciente(rs.getLong("id_paciente"));
                     chamados.add(chamado);
@@ -85,6 +85,37 @@ public class ChamadoDAO {
         }
         return chamado;
     }
+
+    public ArrayList<ChamadoTO> findByPaciente(Long id) {
+        ArrayList<ChamadoTO> chamados = new ArrayList<ChamadoTO>();
+        String sql = "select * from t_cxv_chamado where id_paciente = ?";
+        try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql)) {
+            ps.setLong(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    ChamadoTO chamado = new ChamadoTO();
+                    chamado.setId(rs.getLong("id_chamado"));
+                    chamado.setTipoProblema(rs.getString("tp_problema"));
+                    chamado.setUrgencia(rs.getInt("nr_urgencia"));
+                    chamado.setStatus(rs.getString("st_dificuldade"));
+                    chamado.setDataChamado(rs.getDate("dt_chamado").toLocalDate());
+                    chamado.setIdDificuldade(rs.getLong("id_dificuldade"));
+                    chamado.setIdPaciente(rs.getLong("id_paciente"));
+                    chamados.add(chamado);
+                }
+            } else {
+                return null;
+            }
+        }   catch (SQLException e){
+            System.out.println("Erro ao buscar: " + e.getMessage());
+        } finally {
+            ConnectionFactory.closeConnection();
+        }
+        return chamados;
+    }
+
+
 
     public boolean delete (Long id) {
         String sql = "delete from t_cxv_chamado where id_chamado = ?";

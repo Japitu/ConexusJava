@@ -31,6 +31,12 @@ public class ChamadoBO {
         return chamadoDAO.findById(id);
     }
 
+    public ArrayList<ChamadoTO> findByPaciente(Long id) {
+        chamadoDAO = new ChamadoDAO();
+
+        return chamadoDAO.findByPaciente(id);
+    }
+
     public boolean delete(Long id) {
         chamadoDAO = new ChamadoDAO();
 
