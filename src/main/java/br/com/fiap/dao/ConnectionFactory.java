@@ -7,18 +7,17 @@ import java.sql.SQLException;
 public class ConnectionFactory {
     private static Connection connection;
 
-    public synchronized static void closeConnection() {
+    public static void closeConnection() {
         try {
-            if (!connection.isClosed() && connection != null) {
+            if (!connection.isClosed()) {
                 connection.close();
-                connection = null;
             }
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }
     }
 
-    public synchronized static Connection getConnection() {
+    public static Connection getConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
                 return connection;
